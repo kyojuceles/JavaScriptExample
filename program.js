@@ -4,4 +4,4 @@ Function.prototype.method = function (name, func)
 	return this;
 };
 
-document.writeln("!!!!Hello JavaScript World!!!!");
+document.writeln("Hello JavaScript World");
