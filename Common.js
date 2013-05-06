@@ -5,6 +5,16 @@ Function.prototype.method = function (name, func)
 	return this;
 };
 
+//if (typeof Object.create !== 'function')
+//{
+//	Object.create = function (o) 
+//	{
+		//var F = function () {};
+		//F.prototype = o;
+		//return new F();
+//	};
+//};
+
 Function.method('new', function ()
 {
 	// 생성자의 프로토타입을 상속받는 새로운 객체 생성

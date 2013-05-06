@@ -1,6 +1,6 @@
-var CreatePerson = function ()
+var CreatePerson = function (init_name)
 {
-	var name = "";
+	var name = init_name;
 	var hp = 0;
 	
 	return {
@@ -25,8 +25,13 @@ var CreatePerson = function ()
 			hp += amount;
 		}
 	};
-}();
+};
 
-CreatePerson.init("Andrew");
-CreatePerson.recovery_hp(10);
-CreatePerson.output_status();
+var kyojuceles = CreatePerson("kyojuceles");
+var andrew = CreatePerson("Andrew");
+
+kyojuceles.recovery_hp(10);
+andrew.recovery_hp(20);
+
+kyojuceles.output_status();
+andrew.output_status();
