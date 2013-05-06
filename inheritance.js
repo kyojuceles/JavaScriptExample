@@ -1,4 +1,3 @@
-// common method declare
 Function.prototype.method = function (name, func)
 {
 	this.prototype[name] = func;
@@ -56,17 +55,3 @@ Cat.prototype.purr = function (n)
 	}
 	return s;
 };
-
-Cat.prototype.get_name = function ()
-{
-    return this.says() + ' ' + this.name + ' ' + this.says();
-};
-
-var myCat = new Cat('Henrietta');
-var says = myCat.says();
-var purr = myCat.purr(5);
-var name = myCat.get_name();
-
-document.writeln(says);
-document.writeln(purr);
-document.writeln(name);
