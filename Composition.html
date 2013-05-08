@@ -1,0 +1,67 @@
+<html>
+<head>
+<title> eventuality 예제 </title>
+</head>
+
+<body>
+사각형을 클릭하세요<br>
+<div id = "divTest" style = "width:100px; height:100px; border:solid 1px black; cursor:pointer;" onclick = "this.fire(event)"></div>
+<script type = "text/javascript">
+<!--
+	var eventuality = function (that)
+	{
+		var registry = {};
+		
+		that.fire = function (event)
+		{
+			var array,
+				func,
+				handler,
+				i,
+				type = typeof event === 'string' ? event : event.type;
+			
+			if (registry.hasOwnProperty(type))
+			{
+				array = registry[type];
+				for (i = 0; i < array.length; i += 1)
+				{
+					handler = array[i];
+					func = handler.method;
+					if (typeof func === 'string')
+					{
+						func = this[func];
+					}
+					
+					func.apply(this, handler.parameters || [event]);
+				}
+			}
+			return this;
+		};
+		
+		that.on = function (type, method, parameters)
+		{
+			var handler = 
+			{
+				method: method,
+				parameters: parameters
+			};
+			
+			if (registry.hasOwnProperty(type))
+			{
+				registry[type].push(handler);
+			}
+			else
+			{
+				registry[type] = [handler];
+			}
+			return this;
+		};
+		return that;
+	};
+
+	var oDiv = eventuality(document.getElementById('divTest'));
+	oDiv.on('click', function() {alert('test')});
+//-->
+</script>
+</body>
+</html>
